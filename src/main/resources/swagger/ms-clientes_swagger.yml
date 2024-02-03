@@ -1,0 +1,198 @@
+openapi: 3.0.1
+info:
+  title: API de Gestión de Clientes
+  description: |-
+    La API de Gestión de Clientes permite a los desarrolladores realizar operaciones relacionadas con la gestión de clientes, como la creación, actualización y eliminación de clientes. Esta API proporciona una forma sencilla y segura de interactuar con la funcionalidad de gestión de clientes de nuestra aplicación.
+  version: 1.0.0
+  termsOfService: https://www.example.com/terms
+  contact:
+    email: vertkle@gmail.com
+  license:
+    name: Licencia MIT
+    url: https://www.example.com/license
+servers:
+  - url: http://localhost:8080/api/v1
+tags:
+  - name: customers
+
+paths:
+  /customer:
+    get:
+      operationId: getAllCustomers
+      tags:
+        - customers
+      summary: Obtener lista de todos los clientes
+      responses:
+        '200':
+          description: Lista de clientes obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Customer"
+    post:
+      operationId: createCustomer
+      tags:
+        - customers
+      summary: Crear un nuevo cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Cliente creado con éxito
+        '400':
+          description: Error en Request
+    put:
+      operationId: updateCustomer
+      tags:
+        - customers
+      summary: Actualizar un cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Cliente actualizado con éxito
+        '400':
+          description: Error Request
+        '404':
+          description: Recurso no encontrado
+
+  /customer/{customer_id}:
+    get:
+      operationId: getCustomerById
+      tags:
+        - customers
+      summary: Obtener información de un cliente
+      parameters:
+        - in: path
+          name: customer_id
+          schema:
+            type: string
+          required: true
+          description: ID del cliente
+      responses:
+        '200':
+          description: Información del cliente obtenida con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Error Request
+        '404':
+          description: Recurso no encontrado
+    delete:
+      operationId: deleteCustomerById
+      tags:
+        - customers
+      summary: Eliminar un cliente
+      parameters:
+        - in: path
+          name: customer_id
+          schema:
+            type: string
+          required: true
+          description: ID del cliente
+      responses:
+        '200':
+          description: Cliente actualizado con éxito
+        '400':
+          description: Error Request
+        '404':
+          description: Recurso no encontrado
+
+  /customer/authorized_signers/{customer_id}:
+    get:
+      operationId: getAuthorizedSignersByCustomerId
+      tags:
+        - customers
+      summary: Obtener los signatarios autorizados de un cliente
+      parameters:
+        - in: path
+          name: customer_id
+          schema:
+            type: string
+          required: true
+          description: ID del cliente
+      responses:
+        '200':
+          description: Lista de signatarios autorizados obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthorizedSigner'
+        '400':
+          description: Error en request
+        '404':
+          description: Recurso no encontrado
+    post:
+      operationId: createAuthorizedSignersByCustomerId
+      tags:
+        - customers
+      summary: Crea Signatarios autorizados por cliente
+      parameters:
+        - in: path
+          name: customer_id
+          schema:
+            type: string
+          required: true
+          description: ID del cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizedSigner'
+      responses:
+        '201':
+          description: Se creó el Signatario autorizado
+        '400':
+          description: Error en request
+        '404':
+          description: Recurso no encontrado
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        _id:
+          type: string
+        identifier:
+          type: string
+        fullname:
+          type: string
+        type:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        birthday:
+          type: string
+        authorizedSigners:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorizedSigner'
+    AuthorizedSigner:
+      type: object
+      properties:
+        dni:
+          type: string
+        fullname:
+          type: string
+        cargo:
+          type: string
