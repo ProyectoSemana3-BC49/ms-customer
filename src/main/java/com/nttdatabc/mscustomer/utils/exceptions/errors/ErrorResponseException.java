@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
  * Clase del ErrorException.
  */
 @Data
-public class ErrorResponseException extends Exception{
+public class ErrorResponseException extends Exception {
   HttpStatus httpStatus;
   int status;
 

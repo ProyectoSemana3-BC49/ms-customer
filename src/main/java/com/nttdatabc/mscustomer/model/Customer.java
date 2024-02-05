@@ -1,25 +1,17 @@
 package com.nttdatabc.mscustomer.model;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.nttdatabc.mscustomer.model.AuthorizedSigner;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
+import java.util.Objects;
+import javax.annotation.Generated;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-import java.util.*;
-import javax.annotation.Generated;
-
 /**
- * Customer
+ * Customer.
  */
 
 @Document(value = "customer")
@@ -51,8 +43,8 @@ public class Customer {
   }
 
   /**
-   * Get id
-   * @return id
+   * Get id.
+   * @return id.
    */
 
   @Schema(name = "_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
@@ -131,8 +123,8 @@ public class Customer {
   }
 
   /**
-   * Get address
-   * @return address
+   * Get address.
+   * @return address.
    */
 
   @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
@@ -210,6 +202,12 @@ public class Customer {
     return this;
   }
 
+  /**
+   * Add authorized.
+   *
+   * @param authorizedSignersItem item.
+   * @return customer.
+   */
   public Customer addAuthorizedSignersItem(AuthorizedSigner authorizedSignersItem) {
     if (this.authorizedSigners == null) {
       this.authorizedSigners = new ArrayList<>();
@@ -242,15 +240,15 @@ public class Customer {
       return false;
     }
     Customer customer = (Customer) o;
-    return Objects.equals(this.id, customer.id) &&
-        Objects.equals(this.identifier, customer.identifier) &&
-        Objects.equals(this.fullname, customer.fullname) &&
-        Objects.equals(this.type, customer.type) &&
-        Objects.equals(this.address, customer.address) &&
-        Objects.equals(this.phone, customer.phone) &&
-        Objects.equals(this.email, customer.email) &&
-        Objects.equals(this.birthday, customer.birthday) &&
-        Objects.equals(this.authorizedSigners, customer.authorizedSigners);
+    return Objects.equals(this.id, customer.id)
+        && Objects.equals(this.identifier, customer.identifier)
+        && Objects.equals(this.fullname, customer.fullname)
+        && Objects.equals(this.type, customer.type)
+        && Objects.equals(this.address, customer.address)
+        && Objects.equals(this.phone, customer.phone)
+        && Objects.equals(this.email, customer.email)
+        && Objects.equals(this.birthday, customer.birthday)
+        && Objects.equals(this.authorizedSigners, customer.authorizedSigners);
   }
 
   @Override

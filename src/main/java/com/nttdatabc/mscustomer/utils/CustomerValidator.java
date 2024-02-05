@@ -6,13 +6,12 @@ import static com.nttdatabc.mscustomer.utils.Constantes.EX_ERROR_TYPE_PERSONA;
 import static com.nttdatabc.mscustomer.utils.Constantes.EX_USER_REGISTRED;
 import static com.nttdatabc.mscustomer.utils.Constantes.EX_VALUE_EMPTY;
 
-import java.util.Optional;
-import java.util.function.Predicate;
 import com.nttdatabc.mscustomer.model.AuthorizedSigner;
 import com.nttdatabc.mscustomer.model.Customer;
 import com.nttdatabc.mscustomer.model.TypeCustomer;
 import com.nttdatabc.mscustomer.repository.CustomerRepository;
 import com.nttdatabc.mscustomer.utils.exceptions.errors.ErrorResponseException;
+import java.util.function.Predicate;
 import org.springframework.http.HttpStatus;
 import reactor.core.publisher.Mono;
 

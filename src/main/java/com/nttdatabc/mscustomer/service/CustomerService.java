@@ -6,8 +6,6 @@ import com.nttdatabc.mscustomer.utils.exceptions.errors.ErrorResponseException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 /**
  * Interface de CustomerService.
  */

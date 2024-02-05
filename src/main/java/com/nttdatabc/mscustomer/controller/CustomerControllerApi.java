@@ -6,30 +6,23 @@ import com.nttdatabc.mscustomer.utils.ApiUtil;
 import com.nttdatabc.mscustomer.utils.exceptions.errors.ErrorResponseException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import javax.annotation.Generated;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import org.springframework.http.codec.multipart.Part;
 
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-02-02T10:47:15.590547700-05:00[America/Lima]")
 @Validated
@@ -37,18 +30,18 @@ import javax.annotation.Generated;
 public interface CustomerControllerApi {
 
   /**
-   * POST /customer/authorized_signers/{customer_id} : Crea Signatarios autorizados por cliente
+   * POST /customer/authorized_signers/{customer_id} : Crea Signatarios autorizados por cliente.
    *
-   * @param customerId ID del cliente (required)
-   * @param authorizedSigner  (required)
-   * @return Se creó el Signatario autorizado (status code 201)
-   *         or Error en request (status code 400)
-   *         or Recurso no encontrado (status code 404)
+   * @param customerId       ID del cliente (required).
+   * @param authorizedSigner (required).
+   * @return Se creó el Signatario autorizado (status code 201).
+   * or Error en request (status code 400).
+   * or Recurso no encontrado (status code 404).
    */
   @Operation(
       operationId = "createAuthorizedSignersByCustomerId",
       summary = "Crea Signatarios autorizados por cliente",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "201", description = "Se creó el Signatario autorizado"),
           @ApiResponse(responseCode = "400", description = "Error en request"),
@@ -58,7 +51,7 @@ public interface CustomerControllerApi {
   @RequestMapping(
       method = RequestMethod.POST,
       value = "/customer/authorized_signers/{customer_id}",
-      consumes = { "application/json" }
+      consumes = {"application/json"}
   )
   default ResponseEntity<Mono<Void>> createAuthorizedSignersByCustomerId(
       @Parameter(name = "customer_id", description = "ID del cliente", required = true, in = ParameterIn.PATH) @PathVariable("customer_id") String customerId,
@@ -75,14 +68,14 @@ public interface CustomerControllerApi {
   /**
    * POST /customer : Crear un nuevo cliente
    *
-   * @param customer  (required)
+   * @param customer (required)
    * @return Cliente creado con éxito (status code 201)
-   *         or Error en Request (status code 400)
+   * or Error en Request (status code 400)
    */
   @Operation(
       operationId = "createCustomer",
       summary = "Crear un nuevo cliente",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "201", description = "Cliente creado con éxito"),
           @ApiResponse(responseCode = "400", description = "Error en Request")
@@ -91,7 +84,7 @@ public interface CustomerControllerApi {
   @RequestMapping(
       method = RequestMethod.POST,
       value = "/customer",
-      consumes = { "application/json" }
+      consumes = {"application/json"}
   )
   default ResponseEntity<Mono<Void>> createCustomer(
       @Parameter(name = "Customer", description = "", required = true) @Valid @RequestBody Customer customer,
@@ -108,13 +101,13 @@ public interface CustomerControllerApi {
    *
    * @param customerId ID del cliente (required)
    * @return Cliente actualizado con éxito (status code 200)
-   *         or Error Request (status code 400)
-   *         or Recurso no encontrado (status code 404)
+   * or Error Request (status code 400)
+   * or Recurso no encontrado (status code 404)
    */
   @Operation(
       operationId = "deleteCustomerById",
       summary = "Eliminar un cliente",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "200", description = "Cliente actualizado con éxito"),
           @ApiResponse(responseCode = "400", description = "Error Request"),
@@ -144,7 +137,7 @@ public interface CustomerControllerApi {
   @Operation(
       operationId = "getAllCustomers",
       summary = "Obtener lista de todos los clientes",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "200", description = "Lista de clientes obtenida con éxito", content = {
               @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Customer.class)))
@@ -154,7 +147,7 @@ public interface CustomerControllerApi {
   @RequestMapping(
       method = RequestMethod.GET,
       value = "/customer",
-      produces = { "application/json" }
+      produces = {"application/json"}
   )
   default ResponseEntity<Flux<Customer>> getAllCustomers(
       @Parameter(hidden = true) final ServerWebExchange exchange
@@ -178,13 +171,13 @@ public interface CustomerControllerApi {
    *
    * @param customerId ID del cliente (required)
    * @return Lista de signatarios autorizados obtenida con éxito (status code 200)
-   *         or Error en request (status code 400)
-   *         or Recurso no encontrado (status code 404)
+   * or Error en request (status code 400)
+   * or Recurso no encontrado (status code 404)
    */
   @Operation(
       operationId = "getAuthorizedSignersByCustomerId",
       summary = "Obtener los signatarios autorizados de un cliente",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "200", description = "Lista de signatarios autorizados obtenida con éxito", content = {
               @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = AuthorizedSigner.class)))
@@ -196,7 +189,7 @@ public interface CustomerControllerApi {
   @RequestMapping(
       method = RequestMethod.GET,
       value = "/customer/authorized_signers/{customer_id}",
-      produces = { "application/json" }
+      produces = {"application/json"}
   )
   default ResponseEntity<Flux<AuthorizedSigner>> getAuthorizedSignersByCustomerId(
       @Parameter(name = "customer_id", description = "ID del cliente", required = true, in = ParameterIn.PATH) @PathVariable("customer_id") String customerId,
@@ -221,13 +214,13 @@ public interface CustomerControllerApi {
    *
    * @param customerId ID del cliente (required)
    * @return Información del cliente obtenida con éxito (status code 200)
-   *         or Error Request (status code 400)
-   *         or Recurso no encontrado (status code 404)
+   * or Error Request (status code 400)
+   * or Recurso no encontrado (status code 404)
    */
   @Operation(
       operationId = "getCustomerById",
       summary = "Obtener información de un cliente",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "200", description = "Información del cliente obtenida con éxito", content = {
               @Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class))
@@ -239,7 +232,7 @@ public interface CustomerControllerApi {
   @RequestMapping(
       method = RequestMethod.GET,
       value = "/customer/{customer_id}",
-      produces = { "application/json" }
+      produces = {"application/json"}
   )
   default ResponseEntity<Mono<Customer>> getCustomerById(
       @Parameter(name = "customer_id", description = "ID del cliente", required = true, in = ParameterIn.PATH) @PathVariable("customer_id") String customerId,
@@ -262,15 +255,15 @@ public interface CustomerControllerApi {
   /**
    * PUT /customer : Actualizar un cliente
    *
-   * @param customer  (required)
+   * @param customer (required)
    * @return Cliente actualizado con éxito (status code 200)
-   *         or Error Request (status code 400)
-   *         or Recurso no encontrado (status code 404)
+   * or Error Request (status code 400)
+   * or Recurso no encontrado (status code 404)
    */
   @Operation(
       operationId = "updateCustomer",
       summary = "Actualizar un cliente",
-      tags = { "customers" },
+      tags = {"customers"},
       responses = {
           @ApiResponse(responseCode = "200", description = "Cliente actualizado con éxito"),
           @ApiResponse(responseCode = "400", description = "Error Request"),
@@ -280,7 +273,7 @@ public interface CustomerControllerApi {
   @RequestMapping(
       method = RequestMethod.PUT,
       value = "/customer",
-      consumes = { "application/json" }
+      consumes = {"application/json"}
   )
   default ResponseEntity<Mono<Void>> updateCustomer(
       @Parameter(name = "Customer", description = "", required = true) @Valid @RequestBody Customer customer,

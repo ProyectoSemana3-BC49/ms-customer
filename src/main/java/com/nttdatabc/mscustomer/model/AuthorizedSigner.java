@@ -1,21 +1,12 @@
 package com.nttdatabc.mscustomer.model;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
+import java.util.Objects;
 import javax.annotation.Generated;
 
 /**
- * AuthorizedSigner
+ * AuthorizedSigner.
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-02-02T10:47:15.590547700-05:00[America/Lima]")
@@ -33,8 +24,9 @@ public class AuthorizedSigner {
   }
 
   /**
-   * Get dni
-   * @return dni
+   * Get dni.
+   *
+   * @return dni.
    */
 
   @Schema(name = "dni", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
@@ -53,8 +45,11 @@ public class AuthorizedSigner {
   }
 
   /**
-   * Get fullname
-   * @return fullname
+   * Clase generado openApi.
+   *
+   * Get fullname.
+   *
+   * @return fullname.
    */
 
   @Schema(name = "fullname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
@@ -96,9 +91,9 @@ public class AuthorizedSigner {
       return false;
     }
     AuthorizedSigner authorizedSigner = (AuthorizedSigner) o;
-    return Objects.equals(this.dni, authorizedSigner.dni) &&
-        Objects.equals(this.fullname, authorizedSigner.fullname) &&
-        Objects.equals(this.cargo, authorizedSigner.cargo);
+    return Objects.equals(this.dni, authorizedSigner.dni)
+        && Objects.equals(this.fullname, authorizedSigner.fullname)
+        && Objects.equals(this.cargo, authorizedSigner.cargo);
   }
 
   @Override

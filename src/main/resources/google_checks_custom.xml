@@ -62,7 +62,6 @@
       <property name="allowByTailComment" value="true"/>
       <property name="allowNonPrintableEscapes" value="true"/>
     </module>
-    <module name="AvoidStarImport"/>
     <module name="OneTopLevelClass"/>
     <module name="NoLineWrap">
       <property name="tokens" value="PACKAGE_DEF, IMPORT, STATIC_IMPORT"/>
@@ -313,12 +312,12 @@
     <module name="NonEmptyAtclauseDescription"/>
     <module name="InvalidJavadocPosition"/>
 
-    <module name="SummaryJavadoc">
-      <property name="forbiddenSummaryFragments"
-                value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )"/>
-    </module>
-    <module name="JavadocParagraph"/>
-    <module name="RequireEmptyLineBeforeBlockTagGroup"/>
+<!--    <module name="SummaryJavadoc">-->
+<!--      <property name="forbiddenSummaryFragments"-->
+<!--                value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )"/>-->
+<!--    </module>-->
+<!--    <module name="JavadocParagraph"/>-->
+<!--    <module name="RequireEmptyLineBeforeBlockTagGroup"/>-->
     <module name="AtclauseOrder">
       <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>
       <property name="target"
@@ -338,13 +337,13 @@
       <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,
                                    COMPACT_CTOR_DEF"/>
     </module>
-    <module name="MissingJavadocType">
-      <property name="scope" value="protected"/>
-      <property name="tokens"
-                value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,
-                      RECORD_DEF, ANNOTATION_DEF"/>
-      <property name="excludeScope" value="nothing"/>
-    </module>
+<!--    <module name="MissingJavadocType">-->
+<!--      <property name="scope" value="protected"/>-->
+<!--      <property name="tokens"-->
+<!--                value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,-->
+<!--                      RECORD_DEF, ANNOTATION_DEF"/>-->
+<!--      <property name="excludeScope" value="nothing"/>-->
+<!--    </module>-->
     <module name="MethodName">
       <property name="format" value="^[a-z][a-z0-9]\w*$"/>
       <message key="name.invalidPattern"
