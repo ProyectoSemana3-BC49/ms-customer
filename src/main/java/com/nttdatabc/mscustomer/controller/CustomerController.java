@@ -30,9 +30,6 @@ public class CustomerController implements CustomerControllerApi {
   @Autowired
   private CustomerServiceImpl customerService;
 
-  @Value("${ms.property}")
-  private String propertyTest;
-
   @Override
   public ResponseEntity<Mono<Void>> createAuthorizedSignersByCustomerId(String customerId, AuthorizedSigner authorizedSigner, ServerWebExchange exchange) {
     return new ResponseEntity<>(customerService.createAuthorizedSignersByCustomerId(customerId, authorizedSigner)
@@ -95,8 +92,4 @@ public class CustomerController implements CustomerControllerApi {
             .doOnSuccess((e) -> log.info("updateCustomer:: completadoo")));
   }
 
-  @GetMapping("/customer/test")
-  public String data() {
-    return propertyTest;
-  }
 }
